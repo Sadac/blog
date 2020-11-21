@@ -1,0 +1,9 @@
+[submodule "posts"]
+	path = posts
+	url = https://github.com/Sadac/posts.git
+[submodule "comments"]
+	path = comments
+	url = https://github.com/Sadac/comments.git
+[submodule "client"]
+	path = client
+	url = https://github.com/Sadac/client.git
