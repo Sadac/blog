@@ -10,3 +10,6 @@
 [submodule "event-bus"]
 	path = event-bus
 	url = https://github.com/Sadac/event-bus.git
+[submodule "query"]
+	path = query
+	url = https://github.com/Sadac/query.git
