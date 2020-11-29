@@ -13,3 +13,6 @@
 [submodule "query"]
 	path = query
 	url = https://github.com/Sadac/query.git
+[submodule "moderation"]
+	path = moderation
+	url = https://github.com/Sadac/moderation.git
