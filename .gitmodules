@@ -16,3 +16,6 @@
 [submodule "moderation"]
 	path = moderation
 	url = https://github.com/Sadac/moderation.git
+[submodule "infra"]
+	path = infra
+	url = https://github.com/Sadac/infra.git
