@@ -1,0 +1,63 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/* # watch all files in k8s directory
+build:
+  local:
+    push: false # disable push image to registry dockerhub
+
+  # Tells skaffold we're running a Pod in our client directory (context:client) inside of our project
+  # whenever something changes, skaffold will take the changes and update our Pod
+  # update within the content inside the files matching the following the rule /src/**/*.js
+  # or if a file changes inside client, rebuild the entire image, (add new dependency in package.json, creating new folder, etc)
+  artifacts:
+    - image: roccosada/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.js'
+            dest: .
+    - image: roccosada/comments
+      context: comments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js' # in comments we don't have the src/ directory
+            dest: .
+    - image: roccosada/event-bus
+      context: event-bus
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
+    - image: roccosada/moderation
+      context: moderation
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
+    - image: roccosada/posts
+      context: posts
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
+    - image: roccosada/query
+      context: query
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
